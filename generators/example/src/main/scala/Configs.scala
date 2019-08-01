@@ -27,6 +27,8 @@ class RoccRocketConfig extends Config(
   new WithRoccExample ++
   new DefaultRocketConfig)
 
+
+/*
 class PWMRocketConfig extends Config(
   new WithPWMBoomRocketTop ++
   new BaseRocketConfig)
@@ -34,6 +36,43 @@ class PWMRocketConfig extends Config(
 class PWMAXI4RocketConfig extends Config(
   new WithPWMAXI4BoomRocketTop ++
   new BaseRocketConfig)
+
+
+*/
+
+
+
+/* class for uart   */
+
+
+class UARTRocketConfig extends Config(
+  new WithUART ++
+  new WithUARTBoomRocketTop ++
+  new BaseRocketConfig)
+
+
+
+
+
+/* class for pwm new*/
+
+
+
+class PWMRocketConfig extends Config(
+  new WithPWM ++
+  new WithPWMBoomRocketTop ++
+  new BaseRocketConfig)
+
+
+
+
+
+
+
+
+
+
+
 
 class SimBlockDeviceRocketConfig extends Config(
   new WithBlockDevice ++
@@ -90,6 +129,9 @@ class RoccBoomConfig extends Config(
   new WithRoccExample ++
   new DefaultBoomConfig)
 
+
+/*
+
 class PWMBoomConfig extends Config(
   new WithPWMBoomRocketTop ++
   new BaseBoomConfig)
@@ -97,6 +139,20 @@ class PWMBoomConfig extends Config(
 class PWMAXI4BoomConfig extends Config(
   new WithPWMAXI4BoomRocketTop ++
   new BaseBoomConfig)
+
+*/
+
+
+
+
+/* boom config for uart*/
+
+class UARTBoomConfig extends Config(
+  new WithUART ++
+  new WithUARTBoomRocketTop ++
+  new BaseBoomConfig)
+
+
 
 class SimBlockDeviceBoomConfig extends Config(
   new WithBlockDevice ++
@@ -182,6 +238,10 @@ class RoccBoomAndRocketConfig extends Config(
   new WithRoccExample ++
   new DefaultBoomAndRocketConfig)
 
+
+
+/*
+
 class PWMBoomAndRocketConfig extends Config(
   new WithPWMBoomRocketTop ++
   new BaseBoomAndRocketConfig)
@@ -189,6 +249,10 @@ class PWMBoomAndRocketConfig extends Config(
 class PWMAXI4BoomAndRocketConfig extends Config(
   new WithPWMAXI4BoomRocketTop ++
   new BaseBoomAndRocketConfig)
+
+*/
+
+
 
 class SimBlockDeviceBoomAndRocketConfig extends Config(
   new WithBlockDevice ++
@@ -204,6 +268,21 @@ class GPIOBoomAndRocketConfig extends Config(
   new WithGPIO ++
   new WithGPIOBoomRocketTop ++
   new BaseBoomAndRocketConfig)
+
+
+
+
+
+/* class for uart boom rocket*/
+
+
+
+class UARTBoomAndRocketConfig extends Config(
+  new WithUART ++
+  new WithUARTBoomRocketTop ++
+  new BaseBoomAndRocketConfig)
+
+
 
 class DualCoreBoomAndOneRocketConfig extends Config(
   new WithNormalBoomRocketTop ++

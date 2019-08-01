@@ -8,14 +8,11 @@ import freechips.rocketchip.subsystem.{RocketTilesKey, WithRoccExample, WithNMem
 import freechips.rocketchip.diplomacy.{LazyModule, ValName}
 import freechips.rocketchip.devices.tilelink.BootROMParams
 import freechips.rocketchip.tile.{XLen, BuildRoCC, TileKey, LazyRoCC}
-
 import boom.system.{BoomTilesKey}
-
 import testchipip._
-
 import hwacha.{Hwacha}
-
 import sifive.blocks.devices.gpio._
+import sifive.blocks.devices.uart._
 
 /**
  * TODO: Why do we need this?
@@ -45,6 +42,20 @@ class WithGPIO extends Config((site, here, up) => {
     GPIOParams(address = 0x10012000, width = 4, includeIOF = false))
 })
 
+
+class WithUART extends Config((site, here, up) => {
+  case PeripheryUARTKey => List(
+    UARTParams(address = 0x20000000, dataBits = 8, stopBits = 2, divisorBits  = 16, oversample  = 4, nSamples = 3, nTxEntries = 8, nRxEntries  = 8))
+})
+
+
+/* parameterclass for pwm*/
+class WithPWM extends Config((site, here, up) => {
+  case PeripheryPWMKey => List(
+    PWMParams(address = 0x2000 , numout = 8 ))
+})
+
+
 // -----------------------------------------------
 // BOOM and/or Rocket Top Level System Parameter Mixins
 // -----------------------------------------------
@@ -58,9 +69,17 @@ class WithNormalBoomRocketTop extends Config((site, here, up) => {
   }
 })
 
+
+
+
 /**
  * Class to specify a top level BOOM and/or Rocket system with PWM
+
+
  */
+
+ /*
+ 
 class WithPWMBoomRocketTop extends Config((site, here, up) => {
   case BuildBoomRocketTop => (clock: Clock, reset: Bool, p: Parameters) =>
     Module(LazyModule(new BoomRocketTopWithPWMTL()(p)).module)
@@ -74,6 +93,8 @@ class WithPWMAXI4BoomRocketTop extends Config((site, here, up) => {
     Module(LazyModule(new BoomRocketTopWithPWMAXI4()(p)).module)
 })
 
+*/
+
 /**
  * Class to specify a top level BOOM and/or Rocket system with a block device
  */
@@ -84,6 +105,42 @@ class WithBlockDeviceModelBoomRocketTop extends Config((site, here, up) => {
     top
   }
 })
+
+
+
+
+
+
+
+
+
+/* class for pwm new   */
+
+class WithPWMBoomRocketTop extends Config((site, here, up) => {
+  case BuildBoomRocketTop => (clock: Clock, reset: Bool, p: Parameters) =>
+    Module(LazyModule(new BoomRocketTopWithPWM()(p)).module)
+})
+
+
+
+/* Added class for UART         */
+
+class WithUARTBoomRocketTop extends Config((site, here, up) => {
+  case BuildBoomRocketTop => (clock: Clock, reset: Bool, p: Parameters) =>
+  //val top =
+   Module(LazyModule(new BoomRocketTopWithUART()(p)).module)
+  //top.loopback()
+  //top
+
+
+})
+
+
+
+
+
+
+
 
 /**
  * Class to specify a top level BOOM and/or Rocket system with a simulator block device

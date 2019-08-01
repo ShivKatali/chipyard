@@ -11,6 +11,10 @@ import freechips.rocketchip.util.DontTouch
 import testchipip._
 
 import sifive.blocks.devices.gpio._
+import sifive.blocks.devices.uart._
+
+
+
 
 // -------------------------------
 // BOOM and/or Rocket Top Level Systems
@@ -29,6 +33,8 @@ class BoomRocketTopModule[+L <: BoomRocketTop](l: L) extends boom.system.Example
 
 //---------------------------------------------------------------------------------------------------------
 
+
+/*
 class BoomRocketTopWithPWMTL(implicit p: Parameters) extends BoomRocketTop
   with HasPeripheryPWMTL {
   override lazy val module = new BoomRocketTopWithPWMTLModule(this)
@@ -47,7 +53,12 @@ class BoomRocketTopWithPWMAXI4(implicit p: Parameters) extends BoomRocketTop
 class BoomRocketTopWithPWMAXI4Module(l: BoomRocketTopWithPWMAXI4) extends BoomRocketTopModule(l)
   with HasPeripheryPWMAXI4ModuleImp
 
+
+  */
+
 //---------------------------------------------------------------------------------------------------------
+
+
 
 class BoomRocketTopWithBlockDevice(implicit p: Parameters) extends BoomRocketTop
   with HasPeripheryBlockDevice {
@@ -67,3 +78,36 @@ class BoomRocketTopWithGPIO(implicit p: Parameters) extends BoomRocketTop
 class BoomRocketTopWithGPIOModule(l: BoomRocketTopWithGPIO)
   extends BoomRocketTopModule(l)
   with HasPeripheryGPIOModuleImp
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+
+class BoomRocketTopWithUART(implicit p: Parameters) extends BoomRocketTop
+  with HasPeripheryUART {
+  override lazy val module = new BoomRocketTopWithUARTModule(this)
+}
+
+class BoomRocketTopWithUARTModule(l: BoomRocketTopWithUART) extends BoomRocketTopModule(l)
+  with HasPeripheryUARTModuleImp
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------------------
+
+
+
+
+class BoomRocketTopWithPWM(implicit p: Parameters) extends BoomRocketTop
+  with HasPeripheryPWM {
+  override lazy val module = new BoomRocketTopWithPWMModule(this)
+}
+
+class BoomRocketTopWithPWMModule(l: BoomRocketTopWithPWM) extends BoomRocketTopModule(l)
+  with HasPeripheryPWMModuleImp

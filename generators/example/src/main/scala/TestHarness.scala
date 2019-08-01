@@ -9,11 +9,13 @@ import freechips.rocketchip.diplomacy.LazyModule
 import freechips.rocketchip.config.{Field, Parameters}
 import freechips.rocketchip.util.GeneratorApp
 
+import sifive.blocks.devices.uart._
+
 // --------------------------
 // BOOM and/or Rocket Test Harness
 // --------------------------
 
-case object BuildBoomRocketTop extends Field[(Clock, Bool, Parameters) => BoomRocketTopModule[BoomRocketTop]]
+case object BuildBoomRocketTop extends Field[(Clock, Bool, Parameters) => BoomRocketTopModule[BoomRocketTop]] //   with HasPeripheryPWMModuleImp]// with HasPeripheryUARTModuleImp]
 
 class BoomRocketTestHarness(implicit val p: Parameters) extends Module {
   val io = IO(new Bundle {
@@ -25,6 +27,12 @@ class BoomRocketTestHarness(implicit val p: Parameters) extends Module {
 
   val dut = p(BuildBoomRocketTop)(clock, reset.toBool, p)
   dut.debug := DontCare
+
+ // UART.loopback(dut.uart(0))                          //  foruart in loopback mode
+
+
+ // PWM.getout(dut.pwm(0))
+
   dut.connectSimAXIMem()
   dut.connectSimAXIMMIO()
   dut.dontTouchPorts()

@@ -32,11 +32,11 @@ ifeq ($(SUB_PROJECT),example)
 	MODEL             ?= BoomRocketTestHarness
 	VLOG_MODEL        ?= TestHarness
 	MODEL_PACKAGE     ?= $(SBT_PROJECT)
-	CONFIG            ?= DefaultRocketConfig
+	CONFIG            ?= PWMRocketConfig
 	CONFIG_PACKAGE    ?= $(SBT_PROJECT)
 	GENERATOR_PACKAGE ?= $(SBT_PROJECT)
 	TB                ?= TestDriver
-	TOP               ?= BoomRocketTop
+	TOP               ?= BoomRocketTopWithPWM
 endif
 # for BOOM developers
 ifeq ($(SUB_PROJECT),boom)

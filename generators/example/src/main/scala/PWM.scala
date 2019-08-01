@@ -1,5 +1,7 @@
 package example
 
+/*
+
 import chisel3._
 import chisel3.util._
 import freechips.rocketchip.amba.axi4._
@@ -11,6 +13,13 @@ import freechips.rocketchip.tilelink._
 import freechips.rocketchip.util.UIntIsOneOf
 
 case class PWMParams(address: BigInt, beatBytes: Int)
+
+
+
+
+
+
+
 
 class PWMBase(w: Int) extends Module {
   val io = IO(new Bundle {
@@ -34,9 +43,24 @@ class PWMBase(w: Int) extends Module {
   io.pwmout := io.enable && (counter < io.duty)
 }
 
+
+
+
+
+
+
+
 trait PWMBundle extends Bundle {
   val pwmout = Output(Bool())
 }
+
+
+
+
+
+
+
+
 
 trait PWMModule extends HasRegMap {
   val io: PWMBundle
@@ -65,6 +89,14 @@ trait PWMModule extends HasRegMap {
       RegField(1, enable)))
 }
 
+
+
+
+
+
+
+
+
 class PWMTL(c: PWMParams)(implicit p: Parameters)
   extends TLRegisterRouter(
     c.address, "pwm", Seq("ucbbar,pwm"),
@@ -72,10 +104,23 @@ class PWMTL(c: PWMParams)(implicit p: Parameters)
       new TLRegBundle(c, _) with PWMBundle)(
       new TLRegModule(c, _, _) with PWMModule)
 
+
+
+
+
+
 class PWMAXI4(c: PWMParams)(implicit p: Parameters)
   extends AXI4RegisterRouter(c.address, beatBytes = c.beatBytes)(
       new AXI4RegBundle(c, _) with PWMBundle)(
       new AXI4RegModule(c, _, _) with PWMModule)
+
+
+
+
+
+
+
+
 
 trait HasPeripheryPWMTL { this: BaseSubsystem =>
   implicit val p: Parameters
@@ -89,6 +134,14 @@ trait HasPeripheryPWMTL { this: BaseSubsystem =>
   pbus.toVariableWidthSlave(Some(portName)) { pwm.node }
 }
 
+
+
+
+
+
+
+
+
 trait HasPeripheryPWMTLModuleImp extends LazyModuleImp {
   implicit val p: Parameters
   val outer: HasPeripheryPWMTL
@@ -97,6 +150,12 @@ trait HasPeripheryPWMTLModuleImp extends LazyModuleImp {
 
   pwmout := outer.pwm.module.io.pwmout
 }
+
+
+
+
+
+
 
 trait HasPeripheryPWMAXI4 { this: BaseSubsystem =>
   implicit val p: Parameters
@@ -116,6 +175,15 @@ trait HasPeripheryPWMAXI4 { this: BaseSubsystem =>
   }
 }
 
+
+
+
+
+
+
+
+
+
 trait HasPeripheryPWMAXI4ModuleImp extends LazyModuleImp {
   implicit val p: Parameters
   val outer: HasPeripheryPWMAXI4
@@ -124,3 +192,20 @@ trait HasPeripheryPWMAXI4ModuleImp extends LazyModuleImp {
 
   pwmout := outer.pwm.module.io.pwmout
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
