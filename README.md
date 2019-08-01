@@ -1,6 +1,6 @@
-# REBAR Framework [![CircleCI](https://circleci.com/gh/ucb-bar/project-template/tree/master.svg?style=svg)](https://circleci.com/gh/ucb-bar/project-template/tree/master)
+# PWM with Enhanced features in Rocketchip
 
-## Using REBAR
+##
 
 To get started using REBAR, see the documentation on the REBAR documentation site: https://bar-project-template.readthedocs.io/en/latest/
 
