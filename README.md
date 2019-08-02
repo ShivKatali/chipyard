@@ -24,8 +24,11 @@ The test parameters are specified in a file PWM.c
 The register map starts at 0x2000. There are 7 registers available for each PWM output. They are:
 
 period : used to specify the total period of the waveform in clock cycle
+
 duty  : used to specify the high time in clock cycle
+
 numpulses : used to specify the number of pulses required
+
 align : used to specify the alignment (or its complement). The lower  16 bits specify the alignent. The following numbers must be written to this register to get the necessary alignment.
 
                                0x01    Left aligned
